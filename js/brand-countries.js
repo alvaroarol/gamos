@@ -4,6 +4,7 @@ var brandCountries = {
     'BMW': ['Allemagne', 'de.png', 'bmw.png'],
     'Chevrolet': ['États-Unis', 'us.png', 'chevrolet.png'],
     'Citroën': ['France', 'fr.png', 'citroen.png'],
+    'Dacia': ['Roumanie', 'ro.png', 'dacia.png'],
     'Ferrari': ['Italie', 'it.png', 'ferrari.png'],
     'Fiat': ['Italie', 'it.png', 'fiat.png'],
     'Ford': ['États-Unis', 'us.png', 'ford.png'],
