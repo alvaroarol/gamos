@@ -66,6 +66,12 @@ function createImage(photoSource, informationsArray){
         // colour box
         ctx.fillStyle = mainColour;
         ctx.fillRect(55, 390, 50, 40);
+        //  colour box lines
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(55, 390, 50, 3);
+        ctx.fillRect(102, 390, 3, 40);
+        ctx.fillRect(55, 427, 50, 3);
+        ctx.fillRect(55, 390, 3, 40);
         // bottom info separator
         ctx.fillStyle = mainColour;
         ctx.fillRect(0, 745, 1920, 11);
