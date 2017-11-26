@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110167754-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-110167754-1');
+    </script>
+    <meta charset="UTF-8">
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/color-picker.css" rel="stylesheet" />
+</head>
+<body>
+
+<script src="js/color-picker.js"></script>
+
+<h1>GAMOS</h1>
+
+<div class="container">
+    <form>
+        <div>
+            <label>Marque</label>
+            <select name="brand" id="brand"></select>
+            <script src="js/brand-countries.js"></script>
+            <script>
+            var mainColour = '#FFFFFF';
+            for(var i = 0; i < Object.keys(brandCountries).length; i ++){
+                document.getElementById('brand').innerHTML += '<option value="' + Object.keys(brandCountries)[i] + '">' + Object.keys(brandCountries)[i] + '</option>';
+            }
+            </script>
+        </div>
+        <div>
+            <label>Modèle</label>
+            <input type="text" name="model" />
+        </div>
+        <div>
+            <label>Photo</label>
+            <input type="file" name="photo" accept="image/gif, image/jpeg, image/png" />
+        </div>
+        <div>
+            <label>Année</label>
+            <input type="number" name="year" />
+        </div>
+        <div class="colorpicker">
+            <label>Couleur</label>
+            <div id="mycolorpicker" class="cp-default"></div>
+            <script>
+                ColorPicker(document.getElementById('mycolorpicker'), function(hex, hsv, rgb) {
+                    mainColour = hex;
+                });
+            </script>
+        </div>
+        <div>
+            <label>Nom de la couleur</label>
+            <input type="text" name="colour" />
+        </div>
+        <div>
+            <label>Pseudo</label>
+            <input type="text" name="name" />
+        </div>
+        <div>
+            <label>Moteur</label>
+            <input type="text" name="engine" />
+        </div>
+        <div>
+            <label>Cylindrée</label>
+            <input type="text" name="capacity" />
+        </div>
+        <div>
+            <label>Puissance</label>
+            <input type="text" name="power" />
+        </div>
+        <div>
+            <label>Couple</label>
+            <input type="text" name="torque" />
+        </div>
+        <div>
+            <label>Poids</label>
+            <input type="text" name="weight" />
+        </div>
+        <div>
+            <label>Transmission</label>
+            <input type="text" name="transmission" />
+        </div>
+        <div>
+            <label>Boîte de vitesses</label>
+            <input type="text" name="gearbox" />
+        </div>
+        <div>
+            <label>0 - 100 km/h</label>
+            <input type="text" name="acceleration" />
+        </div>
+    </form>
+
+    <div>
+        <canvas id="canvas"></canvas>
+        <a id="generate">Générer</a>
+        <span>Pour enregistrer l'image, clic droit sur l'image puis enregistrer</span>
+    </div>
+
+</div>
+
+
+<script src="js/gamos.js"></script>
+<script>
+    var infos = {
+        'brand': 'Lamborghini',
+        'model': 'Huracan LP 580-2',
+        'year': '2016',
+        'colour': 'Blanc',
+        'name': 'Blue-Falcon',
+        'engine': 'V10 5.2L',
+        'capacity': '5204 cm3',
+        'power': '602 ch @ 8250 tr/min',
+        'torque': '560 Nm @ 6500 tr/min',
+        'weight': '1422 kg',
+        'transmission': 'Arrière',
+        'gearbox': 'Dual Clutch 7 vitesses',
+        'acceleration': '3.2 s'
+    }
+    window.onload = function(){
+        setTimeout(function(){
+            createImage('img/test.jpg', infos);
+        }, 100);
+    }
+</script>
+<script src="js/listeners.js"></script>
+
+</body>
+</html>
