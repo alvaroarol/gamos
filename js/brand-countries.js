@@ -27,6 +27,7 @@ var brandCountries = {
     'Peugeot': ['France', 'fr.png', 'peugeot.png'],
     'Porsche': ['Allemagne', 'de.png', 'porsche.png'],
     'Renault': ['France', 'fr.png', 'renault.png'],
+    'Saab': ['Suède', 'sw.png', 'saab.png'],
     'SEAT': ['Espagne', 'es.png', 'seat.png'],
     'Skoda': ['République Tchèque', 'tc.png', 'skoda.png'],
     'Subaru': ['Japon', 'jp.png', 'subaru.png'],
