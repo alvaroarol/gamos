@@ -74,4 +74,10 @@ form input{
 
 canvas{
     width: 100%;
+    visibility: hidden;
+    position: absolute;
+}
+
+#gamos{
+    width: 100%;
 }

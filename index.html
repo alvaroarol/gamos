@@ -10,13 +10,13 @@
     </script>
     <meta charset="UTF-8">
     <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style.css?" rel="stylesheet" />
     <link href="css/color-picker.css" rel="stylesheet" />
     <title>Gamos</title>
 </head>
 <body>
 
-<script src="js/color-picker.js?1"></script>
+<script src="js/color-picker.js?2"></script>
 
 <h1>GAMOS</h1>
 
@@ -25,7 +25,7 @@
         <div>
             <label>Marque</label>
             <select name="brand" id="brand"></select>
-            <script src="js/brand-countries.js?3"></script>
+            <script src="js/brand-countries.js?4"></script>
             <script>
             var mainColour = '#FFFFFF';
             for(var i = 0; i < Object.keys(brandCountries).length; i ++){
@@ -98,6 +98,7 @@
 
     <div>
         <canvas id="canvas"></canvas>
+        <img id="gamos" />
         <a id="generate">Générer</a>
         <span>Pour enregistrer l'image, clic droit sur l'image puis enregistrer</span>
     </div>
@@ -105,7 +106,7 @@
 </div>
 
 
-<script src="js/gamos.js?1"></script>
+<script src="js/gamos.js?2"></script>
 <script>
     var infos = {
         'brand': 'Lamborghini',
@@ -128,7 +129,7 @@
         }, 100);
     }
 </script>
-<script src="js/listeners.js?1"></script>
+<script src="js/listeners.js?2"></script>
 
 </body>
 </html>

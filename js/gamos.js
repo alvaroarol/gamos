@@ -25,6 +25,60 @@ function newShape(context, pointsArray, fillColour, outlineColour, outlineWidth)
 }
 
 
+/**
+ * By Ken Fyrstenberg Nilsen
+ *
+ * drawImageProp(context, image [, x, y, width, height [,offsetX, offsetY]])
+ *
+ * If image and context are only arguments rectangle will equal canvas
+*/
+function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
+
+    if (arguments.length === 2) {
+        x = y = 0;
+        w = ctx.canvas.width;
+        h = ctx.canvas.height;
+    }
+
+    // default offset is center
+    offsetX = typeof offsetX === "number" ? offsetX : 0.5;
+    offsetY = typeof offsetY === "number" ? offsetY : 0.5;
+
+    // keep bounds [0.0, 1.0]
+    if (offsetX < 0) offsetX = 0;
+    if (offsetY < 0) offsetY = 0;
+    if (offsetX > 1) offsetX = 1;
+    if (offsetY > 1) offsetY = 1;
+
+    var iw = img.width,
+        ih = img.height,
+        r = Math.min(w / iw, h / ih),
+        nw = iw * r,   // new prop. width
+        nh = ih * r,   // new prop. height
+        cx, cy, cw, ch, ar = 1;
+
+    // decide which gap to fill
+    if (nw < w) ar = w / nw;
+    if (Math.abs(ar - 1) < 1e-14 && nh < h) ar = h / nh;  // updated
+    nw *= ar;
+    nh *= ar;
+
+    // calc source rectangle
+    cw = iw / (nw / w);
+    ch = ih / (nh / h);
+    cx = (iw - cw) * offsetX;
+    cy = (ih - ch) * offsetY;
+
+    // make sure source rectangle is valid
+    if (cx < 0) cx = 0;
+    if (cy < 0) cy = 0;
+    if (cw > iw) cw = iw;
+    if (ch > ih) ch = ih;
+
+    // fill image in dest. rectangle
+    ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h);
+}
+
 
 /**
  * MAKE THE GAMOS IMAGE
@@ -44,6 +98,7 @@ function createImage(photoSource, informationsArray){
     var background = new Image();
     background.src = 'img/gamos-bg.jpg';
     background.onload = function(){
+
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
         // SHAPES
@@ -98,7 +153,8 @@ function createImage(photoSource, informationsArray){
         photo = new Image();
         photo.src = photoSource;
         photo.onload = function(){
-            ctx.drawImage(photo, 911, 81, 863, 603);
+            drawImageProp(ctx, photo, 911, 81, 863, 603);
+            //ctx.drawImage(photo, 911, 81, 863, 603);
         }
         // brand
         brand = new Image();
@@ -202,6 +258,14 @@ function createImage(photoSource, informationsArray){
         ctx.fillText(informationsArray.transmission, 1710, 895);
         ctx.fillText(informationsArray.gearbox, 1710, 965);
         ctx.fillText(informationsArray.acceleration, 1710, 1035);
+
+        setTimeout(function(){
+            canvas.toBlob(function(blob) {
+                var newImg = document.createElement("img"),
+                url = URL.createObjectURL(blob);
+                document.getElementById("gamos").src = url;
+            });
+        }, 1000)
 
     }
 
