@@ -9,6 +9,12 @@ h1{
     text-align: center;
 }
 
+h2{
+    font-family: 'BebasNeue';
+    font-size: 36px;
+    text-align: center;
+}
+
 .container{
     margin: auto;
     width: 1200px;
